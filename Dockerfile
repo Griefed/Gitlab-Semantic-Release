@@ -13,8 +13,6 @@ RUN apk update && apk upgrade && \
 RUN node --version && \
     npm --version
 
-COPY daemon.json /etc/docker/daemon.json
-
 RUN npm install -g \
         conventional-changelog-conventionalcommits \
         semantic-release \
