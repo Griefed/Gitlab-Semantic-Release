@@ -1,0 +1,27 @@
+default:
+  image: docker:latest
+  services:
+    - docker:dind
+
+variables:
+  project_name: MyProjectName
+  SEMANTIC_RELEASE_PACKAGE: ${project_name}
+
+stages:
+  - release
+
+Build Release:
+  image: node:12-slim
+  stage: release
+  script:
+    - env
+    - npm i semantic-release @semantic-release/changelog @semantic-release/commit-analyzer @semantic-release/gitlab @semantic-release/git @semantic-release/npm @semantic-release/release-notes-generator
+    - npx semantic-release
+  when: manual
+  only:
+    - master
+  except:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
