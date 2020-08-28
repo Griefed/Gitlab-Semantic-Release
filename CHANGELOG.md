@@ -1,3 +1,10 @@
+### [1.1.1](https://gitlab.com/ujlbu4/gitlab-semantic-release/compare/1.1.0...1.1.1) (2020-08-28)
+
+
+### Bug Fixes
+
+* disable success/fail jobs ([298fb05](https://gitlab.com/ujlbu4/gitlab-semantic-release/commit/298fb055b6b2729fa8b263e51939e66261098be2))
+
 ## [1.1.0](https://gitlab.com/ujlbu4/gitlab-semantic-release/compare/1.0.0...1.1.0) (2020-08-28)
 
 
