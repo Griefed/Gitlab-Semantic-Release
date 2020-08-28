@@ -19,10 +19,8 @@ build-supplementary-image:
     - docker push registry.gitlab.com/ujlbu4/gitlab-semantic-release
 
 release:
-  image: node:12-slim
+  image: registry.gitlab.com/ujlbu4/gitlab-semantic-release
   stage: release
-  variables:
-    IMAGE_NAME: registry.gitlab.com/ujlbu4/gitlab-semantic-release
   script:
     - env
     - npx semantic-release
