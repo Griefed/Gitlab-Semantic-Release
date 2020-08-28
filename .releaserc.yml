@@ -7,7 +7,7 @@ tagFormat: '${version}'
 # Global plugin options (will be passed to all plugins)
 preset: 'conventionalcommits'
 gitlabUrl: 'https://gitlab.com/' # your gitlab url
-
+slackWebhook: 'https://slack.xxx.com/hooks/q3dabbqc6yjyg9x6616o3atgkkr'
 
 # Responsible for verifying conditions necessary to proceed with the release:
 # configuration is correct, authentication token are valid, etc...
@@ -49,3 +49,11 @@ prepare:
 publish:
   - path: '@semantic-release/gitlab'
 
+success:
+  - path: 'semantic-release-slack-bot'
+    notifyOnSuccess: true
+    markdownReleaseNotes: false
+
+fail:
+  - path: 'semantic-release-slack-bot'
+    notifyOnFail: true

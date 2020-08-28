@@ -15,8 +15,21 @@ build-supplementary-image:
   stage: build
   script:
     - docker login registry.gitlab.com -u ujlbu4 -p ${GITLAB_TOKEN}
+    - docker pull registry.gitlab.com/ujlbu4/gitlab-semantic-release
     - docker build -t registry.gitlab.com/ujlbu4/gitlab-semantic-release .
     - docker push registry.gitlab.com/ujlbu4/gitlab-semantic-release
+  only:
+    - master
+  except:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
+
+demo:
+  stage: build
+  script:
+    - echo "demo"
 
 release:
   image: registry.gitlab.com/ujlbu4/gitlab-semantic-release
