@@ -8,16 +8,23 @@ variables:
   SEMANTIC_RELEASE_PACKAGE: ${project_name}
 
 stages:
+  - build
   - release
 
-Build Release:
+build-supplementary-image:
+  stage: build
+  script:
+    - docker build -t registry.gitlab.com/ujlbu4/gitlab-semantic-release .
+    - docker push registry.gitlab.com/ujlbu4/gitlab-semantic-release
+
+release:
   image: node:12-slim
   stage: release
+  variables:
+    IMAGE_NAME: registry.gitlab.com/ujlbu4/gitlab-semantic-release
   script:
     - env
-    - npm i semantic-release @semantic-release/changelog @semantic-release/commit-analyzer @semantic-release/gitlab @semantic-release/git @semantic-release/npm @semantic-release/release-notes-generator
     - npx semantic-release
-  when: manual
   only:
     - master
   except:
