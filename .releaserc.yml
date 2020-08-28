@@ -49,11 +49,11 @@ prepare:
 publish:
   - path: '@semantic-release/gitlab'
 
-success:
-  - path: 'semantic-release-slack-bot'
-    notifyOnSuccess: true
-    markdownReleaseNotes: false
+success: false
+  # - path: 'semantic-release-slack-bot'
+  #   notifyOnSuccess: true
+  #   markdownReleaseNotes: false
 
-fail:
-  - path: 'semantic-release-slack-bot'
-    notifyOnFail: true
+fail: false
+  # - path: 'semantic-release-slack-bot'
+  #   notifyOnFail: true
