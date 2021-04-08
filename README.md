@@ -1,4 +1,3 @@
-
 Example how to bump up release version using [semantic-release](https://github.com/semantic-release/semantic-release)
 
 
@@ -17,4 +16,4 @@ Currently it's doing next things:
 
 At's possible to setup
 - update custom file with release version (ie)
-- send slack/mattermost notifications
+- send slack/mattermost notifications!
