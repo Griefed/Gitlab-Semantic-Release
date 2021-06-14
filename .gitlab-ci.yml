@@ -27,8 +27,9 @@ build-supplementary-image:
       - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
 
 release:
+  needs: ['build-supplementary-image']
   stage: release
-  image: registry.griefed.de/prosper/gitlab-semantic-release:latest
+  image: "$CI_REGISTRY_IMAGE:latest"
   services:
     - docker:dind
   script:
