@@ -1,8 +1,3 @@
-default:
-  image: docker:latest
-  services:
-    - docker:dind
-
 variables:
   project_name: Gitlab-Semantic-Release
   SEMANTIC_RELEASE_PACKAGE: ${project_name}
@@ -13,6 +8,9 @@ stages:
 
 build-supplementary-image:
   stage: build
+  image: jdrouet/docker-with-buildx:stable
+  services:
+    - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
@@ -29,8 +27,10 @@ build-supplementary-image:
       - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
 
 release:
-  image: registry.griefed.de/prosper/gitlab-semantic-release:latest
   stage: release
+  image: registry.griefed.de/prosper/gitlab-semantic-release:latest
+  services:
+    - docker:dind
   script:
     - env
     - npx semantic-release
