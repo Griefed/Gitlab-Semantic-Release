@@ -6,8 +6,7 @@ tagFormat: '${version}'
 
 # Global plugin options (will be passed to all plugins)
 preset: 'conventionalcommits'
-gitlabUrl: 'https://gitlab.com/' # your gitlab url
-slackWebhook: 'https://slack.xxx.com/hooks/q3dabbqc6yjyg9x6616o3atgkkr'
+gitlabUrl: 'https://git.griefed.de/' # your gitlab url
 
 # Responsible for verifying conditions necessary to proceed with the release:
 # configuration is correct, authentication token are valid, etc...
