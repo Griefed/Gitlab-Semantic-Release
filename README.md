@@ -1,4 +1,4 @@
-## Mirror of https://gitlab.com/mlonn/gitlab-semantic-release -> git.griefed.de -> github.com/Griefed
+## Fork of https://gitlab.com/mlonn/gitlab-semantic-release -> git.griefed.de -> github.com/Griefed
 
 Example how to bump up release version using [semantic-release](https://github.com/semantic-release/semantic-release)
 
