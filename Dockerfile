@@ -1,7 +1,5 @@
 FROM docker:dind
 
-# we use docker image as base image cause we need docker and nod
-# it's simplier to install node in docker neither docker in node
 RUN apk update && apk upgrade && \
     apk add --no-cache \
         bash \
