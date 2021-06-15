@@ -21,7 +21,6 @@ RUN npm install -g \
         @semantic-release/exec \
         @semantic-release/git \
         @semantic-release/gitlab \
-        @semantic-release/gitlab-config \
         @semantic-release/npm \
         @semantic-release/release-notes-generator \
 
