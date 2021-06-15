@@ -20,7 +20,6 @@ RUN npm install -g \
         @semantic-release/git \
         @semantic-release/gitlab \
         @semantic-release/npm \
-        @semantic-release/release-notes-generator \
-
+        @semantic-release/release-notes-generator
 
 RUN rm -rf /var/cache/apk/*
