@@ -28,9 +28,10 @@ test docker:
 
 default settings:
   stage: defaults
-  image: "$CI_REGISTRY_IMAGE:latest"
+  image: node
   script:
-      - cat $SEM_RELEASE_OPTIONS > default-releaserc.yml
+    - npm install -g semantic-release @semantic-release/gitlab-config
+    - cat $SEM_RELEASE_OPTIONS > default-releaserc.txt
   only:
       - master
   except:
@@ -40,7 +41,7 @@ default settings:
       - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
   artifacts:
     paths:
-      - default-releaserc.yml
+      - default-releaserc.txt
 
 build-image:
   needs: ['test docker']
