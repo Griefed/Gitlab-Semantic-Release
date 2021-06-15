@@ -24,6 +24,11 @@ test docker:
       --cache-from "$CI_REGISTRY_IMAGE:develop"
       --tag "$CI_REGISTRY_IMAGE:develop"
       --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:develop" .
+  except:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
 
 build-image:
   needs: ['test docker']
