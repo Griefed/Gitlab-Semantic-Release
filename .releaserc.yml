@@ -103,18 +103,21 @@ prepare:
   #   cmd: './deployment/version-plaintext-set.sh ${nextRelease.version}'
   # - path: '@semantic-release/exec'
   #   cmd: './deployment/version-oas-set.sh ${nextRelease.version} openapi.yaml'
-  - path: '@semantic-release/exec'
-    verifyReleaseCmd: "echo ${nextRelease.version} > VERSION.txt"
+  # - path: '@semantic-release/exec'
+  #   verifyReleaseCmd: "echo ${nextRelease.version} > VERSION.txt"
   - path: '@semantic-release/changelog'
     # Create or update the changelog file in the local project repository
-  - path: '@semantic-release/exec'
   - path: '@semantic-release/git'
     # Push a release commit and tag, including configurable files
     message: 'RELEASE: ${nextRelease.version}'
-    assets: ['CHANGELOG.md', 'version', 'openapi.yaml', 'VERSION.txt']
+    assets: ['CHANGELOG.md']
 
 # Responsible for publishing the release.
 publish:
   - path: '@semantic-release/gitlab'
     # Publish a GitLab release
     #  (https://docs.gitlab.com/ce/user/project/releases/index.html#add-release-notes-to-git-tags)
+
+success: false
+
+fail: false
