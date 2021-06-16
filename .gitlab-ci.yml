@@ -62,7 +62,7 @@ release:
     - docker:dind
   script:
     - env
-    - npx semantic-release
+    - npx semantic-release-gitlab
   only:
     - master
   except:
