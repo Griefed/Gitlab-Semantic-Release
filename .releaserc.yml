@@ -87,7 +87,7 @@ generateNotes:
           section: ':scissors: Refactor'
           hidden: false
         - type: 'revert'
-          section: '🙅‍♂️ Reverts'
+          section: '👀 Reverts'
         - type: 'style'
           section: '💈 Style'
         - type: 'test'
@@ -98,11 +98,11 @@ generateNotes:
 # such as package.json, CHANGELOG.md, documentation or compiled assets
 # and pushing a commit.
 prepare:
-  - path: '@semantic-release/exec'
-    # Execute shell command to set package version
-    cmd: './deployment/version-plaintext-set.sh ${nextRelease.version}'
-  - path: '@semantic-release/exec'
-    cmd: './deployment/version-oas-set.sh ${nextRelease.version} openapi.yaml'
+  # - path: '@semantic-release/exec'
+  #   # Execute shell command to set package version
+  #   cmd: './deployment/version-plaintext-set.sh ${nextRelease.version}'
+  # - path: '@semantic-release/exec'
+  #   cmd: './deployment/version-oas-set.sh ${nextRelease.version} openapi.yaml'
   - path: '@semantic-release/exec'
     verifyReleaseCmd: "echo ${nextRelease.version} > VERSION.txt"
   - path: '@semantic-release/changelog'
