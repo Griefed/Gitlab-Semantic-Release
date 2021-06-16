@@ -1,23 +1,24 @@
-variables:
-  project_name: Gitlab-Semantic-Release
-  SEMANTIC_RELEASE_PACKAGE: ${project_name}
-
 stages:
   - test
-  - build
   - release
+  - build
 
 test docker:
   stage: test
   image: registry.griefed.de/prosper/docker-with-buildx:latest
   services:
-    - docker:dind
+    - name: docker:dind
+      alias: docker
+  variables:
+    project_name: $CI_PROJECT_NAME
+    SEMANTIC_RELEASE_PACKAGE: $CI_PROJECT_NAME
   before_script:
     - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_TOKEN" docker.io
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-    - docker buildx create --use
+    - docker buildx create --use --name grfdbuilder
   script:
+    - docker pull "$CI_REGISTRY_IMAGE:develop"
     - docker buildx build
       --push
       --platform linux/amd64,linux/arm/v7,linux/arm64
@@ -30,38 +31,18 @@ test docker:
     variables:
       - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
 
-build-image:
-  needs: ['test docker']
-  stage: build
-  image: registry.griefed.de/prosper/docker-with-buildx:latest
-  services:
-    - docker:dind
-  before_script:
-    - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_TOKEN" docker.io
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-    - docker buildx create --use
-  script:
-    - docker buildx build
-      --push
-      --platform linux/amd64,linux/arm/v7,linux/arm64
-      --cache-from "$CI_REGISTRY_IMAGE:develop"
-      --tag "$CI_REGISTRY_IMAGE:latest"
-      --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:latest" .
-  except:
-    refs:
-      - tags
-    variables:
-      - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
-
 release:
-  needs: ['build-image']
+  needs: ['test docker']
   stage: release
-  image: "$CI_REGISTRY_IMAGE:latest"
+  image: registry.griefed.de/prosper/gitlab-semantic-release:latest
   services:
-    - docker:dind
+    - name: docker:dind
+      alias: docker
+  variables:
+    project_name: $CI_PROJECT_NAME
+    SEMANTIC_RELEASE_PACKAGE: $CI_PROJECT_NAME
   script:
-    - npx semantic-release-gitlab
+    - npx semantic-release
   only:
     - master
   except:
@@ -69,3 +50,29 @@ release:
       - tags
     variables:
       - $CI_COMMIT_TITLE =~ /^RELEASE:.+$/
+
+build:
+  stage: build
+  image: registry.griefed.de/prosper/docker-with-buildx:latest
+  services:
+    - name: docker:dind
+      alias: docker
+  variables:
+    project_name: $CI_PROJECT_NAME
+    SEMANTIC_RELEASE_PACKAGE: $CI_PROJECT_NAME
+  before_script:
+    - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_TOKEN" docker.io
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    - docker buildx create --use --name grfdbuilder
+  script:
+    - docker pull "$CI_REGISTRY_IMAGE:latest"
+    - docker buildx build
+      --push
+      --platform linux/amd64,linux/arm/v7,linux/arm64
+      --cache-from "$CI_REGISTRY_IMAGE:latest"
+      --tag "$CI_REGISTRY_IMAGE:latest"
+      --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:$CI_COMMIT_TAG"
+      --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:latest" .
+  only:
+    - tags
