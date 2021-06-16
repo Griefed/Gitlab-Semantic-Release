@@ -61,7 +61,6 @@ release:
   services:
     - docker:dind
   script:
-    - env
     - npx semantic-release-gitlab
   only:
     - master
