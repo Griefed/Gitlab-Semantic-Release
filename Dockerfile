@@ -1,5 +1,7 @@
 FROM docker:dind
 
+LABEL maintainer="Griefed <griefed@griefed.de>"
+
 RUN apk update && apk upgrade && \
     apk add --no-cache \
         bash \
@@ -7,9 +9,7 @@ RUN apk update && apk upgrade && \
         ca-certificates \
         curl \
         nodejs \
-        npm 
-RUN node --version && \
-    npm --version
+        npm
 
 RUN npm install -g \
         conventional-changelog-conventionalcommits \
