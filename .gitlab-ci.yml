@@ -5,7 +5,7 @@ stages:
 
 test docker:
   stage: test
-  image: registry.griefed.de/prosper/docker-with-buildx:latest
+  image: griefed/docker-with-buildx:latest
   services:
     - name: docker:dind
       alias: docker
@@ -32,7 +32,7 @@ test docker:
 release:
   needs: ['test docker']
   stage: release
-  image: registry.griefed.de/prosper/gitlab-semantic-release:latest
+  image: griefed/gitlab-semantic-release:latest
   services:
     - name: docker:dind
       alias: docker
@@ -51,7 +51,7 @@ release:
 
 build:
   stage: build
-  image: registry.griefed.de/prosper/docker-with-buildx:latest
+  image: griefed/docker-with-buildx:latest
   services:
     - name: docker:dind
       alias: docker
