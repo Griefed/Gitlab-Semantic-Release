@@ -76,11 +76,9 @@ test docker:
     - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     - docker buildx create --use --name mybuilder
   script:
-    - docker pull "$CI_REGISTRY_IMAGE:develop"
     - docker buildx build
       --push
       --platform linux/amd64,linux/arm/v7,linux/arm64
-      --cache-from "$CI_REGISTRY_IMAGE:develop"
       --tag "$CI_REGISTRY_IMAGE:develop"
       --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:develop" .
   except:
@@ -124,11 +122,11 @@ build:
     - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     - docker buildx create --use --name mybuilder
   script:
-    - docker pull "$CI_REGISTRY_IMAGE:latest"
+    - docker pull "$CI_REGISTRY_IMAGE:develop"
     - docker buildx build
       --push
       --platform linux/amd64,linux/arm/v7,linux/arm64
-      --cache-from "$CI_REGISTRY_IMAGE:latest"
+      --cache-from "$CI_REGISTRY_IMAGE:develop"
       --tag "$CI_REGISTRY_IMAGE:latest"
       --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:$CI_COMMIT_TAG"
       --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:latest" .
