@@ -1,5 +1,7 @@
 ##### Fork of https://gitlab.com/mlonn/gitlab-semantic-release -> git.griefed.de -> github.com/Griefed
 
+[[_TOC_]]
+
 # Setup 
 
 :warning: **Requires CI/CD variable `GITLAB_TOKEN` with personal-access-token (read/write permision to registry and repository).**
