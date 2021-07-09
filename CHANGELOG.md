@@ -1,3 +1,26 @@
+## [2.0.0](https://git.griefed.de/prosper/gitlab-semantic-release/compare/1.1.3...2.0.0) (2021-07-09)
+
+
+### 📔 Docs
+
+* Include example config files for GitLab-Runner, gitlab-ci and releaserc ([a99fc5f](https://git.griefed.de/prosper/gitlab-semantic-release/commit/a99fc5ff3d534e5e3da6708d938b078e8b8c299f))
+
+
+### 🦊 CI/CD
+
+* Create release on GitHub after tag mirror from GitLab ([1b15596](https://git.griefed.de/prosper/gitlab-semantic-release/commit/1b155960d9d0e124f1b509cd834a115c4ac6e7f4))
+* Fix "breaking" type ([4fda30f](https://git.griefed.de/prosper/gitlab-semantic-release/commit/4fda30f417545f6705c808c7da2f0af66e02d456))
+* Move Docker build for GitHub container registry to GitLab ([02477c9](https://git.griefed.de/prosper/gitlab-semantic-release/commit/02477c97fa9cc3f6877194122778c5f4fec5e385))
+* Remove from.cache in docker test job. Refactor build to use cache from develop tag. ([43dbca1](https://git.griefed.de/prosper/gitlab-semantic-release/commit/43dbca18dd09df478fb02ccc7962d7a85ce9ee86))
+* Switch images to DockerHub ([6b47c5c](https://git.griefed.de/prosper/gitlab-semantic-release/commit/6b47c5c655cc722c41e4c7b2ffbc9aaadb9f6217))
+* Test self-hosted Dependabot ([79a77a8](https://git.griefed.de/prosper/gitlab-semantic-release/commit/79a77a869bd5376915efaaf7b0384f0736eb9f43))
+
+
+### Other
+
+* Inform users/visitors about move to GitLab ([56f1b38](https://git.griefed.de/prosper/gitlab-semantic-release/commit/56f1b38eee686ddd11d25e778b4cdeb96c6feb1c))
+* Update gitlab-ci template in README ([fca424d](https://git.griefed.de/prosper/gitlab-semantic-release/commit/fca424d4700f260d4e55f612c3f1b6841d6f5fa0))
+
 ### [1.1.3](https://git.griefed.de/prosper/gitlab-semantic-release/compare/1.1.2...1.1.3) (2021-06-16)
 
 
