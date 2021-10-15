@@ -1,3 +1,15 @@
+### [2.0.2](https://git.griefed.de/prosper/gitlab-semantic-release/compare/2.0.1...2.0.2) (2021-10-15)
+
+
+### 🦊 CI/CD
+
+* Update ci-cd image to 1.0.2 ([a8b3995](https://git.griefed.de/prosper/gitlab-semantic-release/commit/a8b3995d33e1dd82d91d1b0b75567de6b0c38a33))
+
+
+### 🛠 Fixes
+
+* Update nodejs and npm ([bd98362](https://git.griefed.de/prosper/gitlab-semantic-release/commit/bd9836221912da4a02834a9a46cf1361b2ae7deb))
+
 ### [2.0.1](https://git.griefed.de/prosper/gitlab-semantic-release/compare/2.0.0...2.0.1) (2021-10-15)
 
 
