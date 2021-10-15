@@ -1,4 +1,4 @@
-FROM docker:latest
+FROM docker:stable
 
 LABEL maintainer="Griefed <griefed@griefed.de>"
 
