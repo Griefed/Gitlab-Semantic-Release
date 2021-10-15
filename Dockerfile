@@ -10,10 +10,20 @@ RUN \
     git \
     ca-certificates \
     curl \
-    nodejs \
+    nodejs-current \
     npm
 
 RUN \
+  echo "node version is: " && \
+    node -v && \
+  echo "npm version is: " && \
+    npm -v && \
+  echo "updating npm..." && \
+  npm update -g && \
+  echo "node version is: " && \
+    node -v && \
+  echo "npm version is: " && \
+    npm -v && \
   npm install -g \
     conventional-changelog-conventionalcommits \
     semantic-release \
