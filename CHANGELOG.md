@@ -1,3 +1,21 @@
+### [2.0.1](https://git.griefed.de/prosper/gitlab-semantic-release/compare/2.0.0...2.0.1) (2021-10-15)
+
+
+### 🦊 CI/CD
+
+* Switch image to gitlab-ci-cd which provides for all jobs ([76e5e80](https://git.griefed.de/prosper/gitlab-semantic-release/commit/76e5e80c01d574e7f336546f69756e598edddfd9))
+
+
+### 🛠 Fixes
+
+* use stable as baseimage as latest no longer has armv7 images ([a726424](https://git.griefed.de/prosper/gitlab-semantic-release/commit/a72642468660b163e822ce55fa4a41c5ca20ec11))
+
+
+### Other
+
+* Add GitLab issue templates ([a94f292](https://git.griefed.de/prosper/gitlab-semantic-release/commit/a94f2929cf7a17af5b0da4a53afc5ea1e7f31387))
+* **deps:** update griefed/gitlab-ci-cd docker tag to v1.0.1 ([779ecf6](https://git.griefed.de/prosper/gitlab-semantic-release/commit/779ecf66ee606223cb59d6a4ad03fcddfa2b5723))
+
 ## [2.0.0](https://git.griefed.de/prosper/gitlab-semantic-release/compare/1.1.3...2.0.0) (2021-07-09)
 
 
