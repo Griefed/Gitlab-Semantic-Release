@@ -1,4 +1,4 @@
-FROM docker:stable
+FROM docker:20.10.9
 
 LABEL maintainer="Griefed <griefed@griefed.de>"
 
@@ -20,6 +20,7 @@ RUN \
     npm -v && \
   echo "updating npm..." && \
   npm update -g && \
+  npm install npm@latest -g && \
   echo "node version is: " && \
     node -v && \
   echo "npm version is: " && \
