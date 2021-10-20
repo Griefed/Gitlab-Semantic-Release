@@ -1,3 +1,17 @@
+## [3.0.0](https://git.griefed.de/prosper/gitlab-semantic-release/compare/2.0.2...3.0.0) (2021-10-20)
+
+
+### 🦊 CI/CD
+
+* Add changelof section for breaking-type ([5972d68](https://git.griefed.de/prosper/gitlab-semantic-release/commit/5972d685303a4bb71b7825740c36b81e245b85af))
+* Don't use cached layers ([85dd041](https://git.griefed.de/prosper/gitlab-semantic-release/commit/85dd041bdf06e249e28c90fb73df7376909a169f))
+* Only build arm64/v8 and amd64 images. Don't push to own registry. Additional develop image tag ([16a47c2](https://git.griefed.de/prosper/gitlab-semantic-release/commit/16a47c2ee1b87c1721e152d8f0e216a8ed044e8d))
+
+
+### 🧨 Breaking changes!
+
+* Fix too old node version. Fixes [#1](https://git.griefed.de/prosper/gitlab-semantic-release/issues/1) ([2af433e](https://git.griefed.de/prosper/gitlab-semantic-release/commit/2af433ed1f6a71f71f95b23a65c36492c1f6814f))
+
 ### [2.0.2](https://git.griefed.de/prosper/gitlab-semantic-release/compare/2.0.1...2.0.2) (2021-10-15)
 
 
