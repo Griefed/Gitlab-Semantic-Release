@@ -1,4 +1,4 @@
-FROM docker:20.10.9
+FROM docker:20.10.10
 
 LABEL maintainer="Griefed <griefed@griefed.de>"
 
